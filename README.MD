@@ -5,61 +5,121 @@
 
 ## Desafio Programação Orientada a Objeto
 
-### Descrição
+### 📜 Descrição
 
 Este desafio abrange conceitos fundamentais de programação orientada a objetos, como Classes, Herança e Encapsulamento.
+  
+#### 📚 Gerenciamento de Biblioteca:
+
+📋 **Vamos criar um sistema orientado a objetos para representar um sistema de biblioteca seguindo os requisitos abaixo:**
+
+- 1️⃣. Cada livro pode ter um ou mais autores.
+
+- 2️⃣. A biblioteca controla apenas o nome, o telefone e a nacionalidade de cada usuário.
+
+- 3️⃣. Cada livro tem um título, editora, uma lista de gêneros aos quais pertence e uma lista de exemplares disponíveis.
+
+- 4️⃣. Quando um exemplar é emprestado, ele é removido da lista de exemplares disponíveis.
+
+- 5️⃣. Alguns livros podem ter um número máximo de renovações permitidas.
+
+- 6️⃣. A biblioteca mantém um registro de todos os empréstimos realizados, incluindo detalhes como data de empréstimo, data de devolução e estado do exemplar (por exemplo, emprestado ou devolvido).
+
+> 🖋️ **Nota:**  _Para modelar o sistema, utilize obrigatoriamente os conceitos de classe, herança, propriedade, encapsulamento e classe abstrata._
+
+### 🛠️ Modelando o Sistema
+
+O sistema de gerenciamento de biblioteca é modelado para gerenciar livros, usuários e empréstimos. A classe Biblioteca centraliza a administração de livros, usuários e registros de empréstimos.
+
+```mermaid
+
+classDiagram
+    class Biblioteca {
+        - List~Livro~ livros
+        - List~Usuario~ usuarios
+        - List~Emprestimo~ emprestimos
+        + adicionarLivro(Livro livro): void
+        + registrarUsuario(Usuario usuario): void
+        + emprestarLivro(Usuario usuario, Exemplar exemplar): void
+        + devolverLivro(Exemplar exemplar): void
+    }
+
+    class Livro {
+        - String titulo
+        - String editora
+        - List~String~ generos
+        - List~Autor~ autores
+        - List~Exemplar~ lista_exemplares
+    }
+
+    class Exemplar {
+        - int id
+        - bool disponivel
+        - int maxRenovacoes
+        + emprestar(): void
+        + devolver(): void
+        + renovar(): void
+    }
+
+    class Pessoa {
+        <<abstract>>
+        - String nome
+    }
+
+    class Usuario {
+        - String telefone
+        - String nacionalidade
+    }
+
+    class Autor {
+        
+    }
+
+    class Emprestimo {
+        - Exemplar exemplar
+        - Usuario usuario
+        - Date dataEmprestimo
+        - Date dataDevolucao
+        - String status
+        + registrarEmprestimo(): void
+        + registrarDevolucao(): void
+    }
+
+    Biblioteca --> Livro : "contém"
+    Biblioteca --> Usuario : "contém"
+    Biblioteca --> Emprestimo : "gerencia"
+    Livro <|-- Exemplar : "herda"
+    Exemplar --> Emprestimo 
+    Usuario --> Emprestimo : "realiza"
+    Livro --> Autor 
+    Pessoa <|-- Usuario : "herda"
+    Pessoa <|-- Autor : "herda"
+
+```
+
+> 💡 _O diagrama UML acima descreve a estrutura do sistema de gerenciamento de biblioteca, detalhando as principais classes e suas interações._
 
 <details>
-  
-1️⃣ Gerenciamento de Biblioteca:
-    Vamos criar um sistema orientado a objetos para representar um sistema de biblioteca seguindo os requisitos abaixo:
-
-    1. Cada livro pode ter um ou mais autores.
-
-    2. A biblioteca controla apenas o nome, o telefone e a nacionalidade
-    de cada usuário.
-
-    3. Cada livro tem um título, editora, uma lista de gêneros aos quais
-    pertence e uma lista de exemplares disponíveis.
-
-    4. Quando um exemplar é emprestado, ele é removido da lista de
-    exemplares disponíveis.
-
-    5. Alguns livros podem ter um número máximo de renovações
-    permitidas.
-
-    6. A biblioteca mantém um registro de todos os empréstimos
-    realizados, incluindo detalhes como data de empréstimo, data de
-    devolução e estado do exemplar (por exemplo, emprestado ou
-    devolvido).
-
-    Para modelar o sistema, utilize obrigatoriamente os conceitos de classe,
-    herança, propriedade, encapsulamento e classe abstrata.
-
-2️⃣ Gerenciamento de Mercado:
-    Vamos criar um sistema orientado a objetos para representar um sistema de mercado seguindo os requisitos fornecidos:
-
-    1. Cada produto pode ter um ou mais fornecedores.
-
-    2. O mercado controla apenas o nome, o telefone e o endereço de
-    cada cliente.
-
-    3. Cada produto tem um nome, uma lista de categorias às quais
-    pertence e uma quantidade disponível em estoque.
-
-    4. Quando um produto é comprado, sua quantidade disponível em
-    estoque é reduzida.
-
-    5. O mercado mantém um registro de todas as transações
-    realizadas, incluindo detalhes como data da compra, cliente
-    envolvido e quantidade de produtos comprados.
 
 
+- **Biblioteca**: Gerencia livros, usuários e empréstimos. Permite adicionar livros, registrar usuários e gerenciar o processo de empréstimo e devolução.
+- **Livro**: Contém informações como título, editora, gêneros, autores e uma lista de exemplares.
+- **Exemplar**: Herda de **Livro** e adiciona atributos para controle de disponibilidade e métodos para emprestar, devolver e renovar.
+- **Pessoa** (classe abstrata): Base para as classes **Usuário** e **Autor**, contendo o atributo nome.
+- **Usuário**: Herda de **Pessoa** e adiciona informações de contato e nacionalidade.
+- **Autor**: Herda de **Pessoa** e lista os livros que escreveu.
+- **Empréstimo**: Relaciona um exemplar a um usuário e controla as datas e status do empréstimo.
+
+### Relacionamentos
+
+- **Biblioteca** contém livros e usuários, e gerencia empréstimos.
+- Cada livro pode ter múltiplos autores.
+- **Exemplar** é um tipo de **Livro** e pode ser emprestado.
 
 </details>
-  
 
-## SQUAD ENIAC - Integrantes 
+
+## 👥 SQUAD ENIAC - Integrantes 
 
 - Ana Julia Rauber - [GitHub](https://github.com/anajuliarauber) - [Likedin](https://www.linkedin.com/in/ana-julia-rauber/);
 - Angelica Conceição Salvino da Silva - [GitHub](https://github.com/AngelicaSalvino) - [Likedin](https://www.linkedin.com/in/angelica-salvino/);
@@ -71,7 +131,14 @@ Este desafio abrange conceitos fundamentais de programação orientada a objetos
 - Natalia Gomes Vitório - [GitHub]() - [Likedin]();
 - Rosana de Souza Brito - [GitHhub](https://github.com/RosanaBrito) - [Likedin](https://www.linkedin.com/in/rosanadesouzabrito/);
 
-## Divisão das tarefas
+### 🤝 Divisão das Tarefas
 
-- A escolha do exercício foi feita por enquete no Discord (aplicativo oficial de comunicação do Bootcamp).
+A divisão das tarefas foi feita em uma reunião colaborativa, na qual discutimos detalhadamente a modelagem do sistema e delegamos as responsabilidades. A escolha da atividade **Gerenciamento de Biblioteca** foi realizada por meio de uma enquete no Discord (aplicativo oficial de comunicação do Bootcamp). A distribuição das tarefas ficou organizada da seguinte forma:
 
+- **Classe Empréstimo**: Carol
+- **Classe Exemplar**: Kassia
+- **Classe Biblioteca**: Fabiana e Ana Julia
+- **Classe Autor**: Laysa
+- **Classe Usuário**: Rosana
+- **Classe Livro**: Marina
+- **Classe Pessoa**: Angélica

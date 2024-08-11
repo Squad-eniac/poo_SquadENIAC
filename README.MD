@@ -50,12 +50,13 @@ classDiagram
         - List~String~ generos
         - List~Autor~ autores
         - List~Exemplar~ lista_exemplares
+        - int maxRenovacoes
     }
 
     class Exemplar {
         - int id
         - bool disponivel
-        - int maxRenovacoes
+        - int numAtualRenovacoes
         + emprestar(): void
         + devolver(): void
         + renovar(): void

@@ -82,8 +82,8 @@ classDiagram
         - Date dataEmprestimo
         - Date dataDevolucao
         - String status
-        + registrarEmprestimo(): void
         + registrarDevolucao(): void
+        + registrarRenovacao(): void
     }
 
     Biblioteca --> Livro : "contém"

@@ -1,5 +1,3 @@
-from exemplar import Exemplar
-
 class Livro:
     def __init__(self, titulo, editora, generos, autores, max_renovacoes=3):
         self.__titulo = titulo
@@ -55,11 +53,8 @@ class Livro:
 
     def adicionar_exemplar(self, exemplar):
         """Adiciona um exemplar do livro à lista de exemplares"""
-        if isinstance(exemplar, Exemplar):
-            self.__lista_exemplares.append(exemplar)
-            print(f"Exemplar {exemplar.id} adicionado ao livro '{self.__titulo}'")
-        else:
-            print("Erro: O objeto fornecido não é uma instância da classe Exemplar.")
+        self.__lista_exemplares.append(exemplar)
+        print(f"Exemplar {exemplar.id} adicionado ao livro '{self.__titulo}'")
 
     def remover_exemplar(self, exemplar):
         """Remove um exemplar do livro da lista de exemplares"""
@@ -73,5 +68,3 @@ class Livro:
         autores_nomes = ', '.join([autor.nome for autor in self.__autores])
         generos_nomes = ', '.join(self.__generos)
         return f"'{self.__titulo}' de {autores_nomes}, Editora: {self.__editora}, Gêneros: {generos_nomes}, Exemplares: {len(self.__lista_exemplares)}"
-
-

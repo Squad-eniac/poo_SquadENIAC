@@ -38,4 +38,3 @@ class Exemplar(Livro):
     def __str__(self):
         """Retorna uma representação em string do exemplar e das informações do livro associado."""
         return f"Exemplar ID: {self.__id} | Livro: {super().__str__()} | Disponível: {self.__disponivel}"
-

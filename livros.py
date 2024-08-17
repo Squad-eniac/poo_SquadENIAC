@@ -70,21 +70,3 @@ class Livro:
         autores_nomes = ', '.join([autor.nome for autor in self.__autores])
         generos_nomes = ', '.join(self.__generos)
         return f"'{self.__titulo}' de {autores_nomes}, Editora: {self.__editora}, Gêneros: {generos_nomes}, Exemplares: {len(self.__lista_exemplares)}"
-
-
-# Teste
-
-autor1 = Autores(nome="Laysa Alexia")
-autor2 = Autores(nome="Lima Cipriano")
-
-livro1 = Livro(titulo="Python para Iniciantes", editora="Editora XYZ", generos=["Tecnologia", "Programação"], autores=[autor1])
-livro2 = Livro(titulo="Avançando com Python", editora="Editora ABC", generos=["Tecnologia", "Programação"])
-
-autor1.adicionar_livro(livro1)
-autor2.adicionar_livro(livro2)
-autor1.adicionar_livro(livro2)
-
-print(autor1)  # Esperado: "Laysa Alexia"
-print(autor2)  # Esperado: "Lima Cipriano"
-print(livro1)  # Esperado: "'Python para Iniciantes' de Laysa Alexia, Editora: Editora XYZ, Gêneros: Tecnologia, Programação, Exemplares: 0"
-print(livro2)  # Esperado: "'Avançando com Python' de Laysa Alexia, Lima Cipriano, Editora: Editora ABC, Gêneros: Tecnologia, Programação, Exemplares: 0"

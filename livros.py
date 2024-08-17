@@ -1,9 +1,11 @@
+from autores import Autores
+
 class Livro:
-    def __init__(self, titulo, editora, generos, autores, max_renovacoes=3):
+    def __init__(self, titulo, editora, generos, autores=None, max_renovacoes=3):
         self.__titulo = titulo
         self.__editora = editora
         self.__generos = generos
-        self.__autores = autores  
+        self.__autores = autores if autores else[]  
         self.__lista_exemplares = []  
         self.__max_renovacoes = max_renovacoes
 

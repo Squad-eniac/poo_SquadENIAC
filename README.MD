@@ -72,8 +72,8 @@ classDiagram
         - String nacionalidade
     }
 
-    class Autor {
-        
+    class Autores {
+        +  adicionar_livro()
     }
 
     class Emprestimo {
